@@ -34,12 +34,13 @@ strictness: 2"
 ```
 
 Controllers tested on ICS setup:
-- ’JointTrajectoryController’
+- JointTrajectoryController
 
 `rostopic pub /lwr/joint_trajectory_controller/command trajectory_msgs/JointTrajectory ’{joint_names: [’lwr_a1_joint’, ’lwr_a2_joint’, ’lwr_e1_joint’,’lwr_a3_joint’, ’lwr_a4_joint’, ’lwr_a5_joint’,’lwr_a6_joint’], points:[{positions: [0.0, 1.570796, 0.0, 0, 0.0, 0.0, -0.0],velocities: [], accelerations: [], effort: [],time_from_start: { secs: 10, nsecs: 0}}]}’ -1`
 
--OneTaskInverseKinematics
- a) with default robot base and end effector
+- OneTaskInverseKinematics
+
+## 1. With default robot base and end effector
 
 `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
@@ -53,7 +54,8 @@ orientation:
   pitch: 0.3
   yaw: 0.3"
 `
- b) with world base and end effector
+
+## w. With world base and end effector
 
 `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
@@ -68,7 +70,7 @@ orientation:
   yaw: 0.5"
 `
 
--AdaptiveTorqueController
+- AdaptiveTorqueController
 `rostopic pub -1 /lwr/adaptive_torque_controller/command std_msgs/Float64MultiArray ’{data: [0.0, 1.57, 0.0, 0.5, 0.0, 0.0, 0.0]}’`
 
 

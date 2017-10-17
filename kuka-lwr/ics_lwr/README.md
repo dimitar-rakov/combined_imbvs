@@ -6,7 +6,7 @@ This package is a guide-trough-example to show how to use the [kuka_lwr](https:/
 
 Create you robot and environment using the lwr model. 
 
-For instance, in the package [__ics_lwr_robot__](./ics_lwr_robot/), the [robot](https://github.com/dimitar-rakov/packages/blob/master/kuka-lwr/ics_lwr/ics_lwr_setup/enviroment/ics_lwr_enviroment.urdf.xacro) is a lwr mounted on a mobile platform, and the [environment](https://github.com/dimitar-rakov/packages/blob/master/kuka-lwr/hri_lwr/hri_lwr_setup/worlds/simple_environment.world) is just a ground plane with a sun.
+For instance, in the package [__ics_lwr_setup__](./ics_lwr_setup/), the [robot](https://github.com/dimitar-rakov/packages/blob/master/kuka-lwr/ics_lwr/ics_lwr_setup/enviroment/ics_lwr_enviroment.urdf.xacro) is a lwr mounted on a mobile platform, and the [environment](https://github.com/dimitar-rakov/packages/blob/master/kuka-lwr/hri_lwr/hri_lwr_setup/worlds/simple_environment.world) is just a ground plane with a sun.
 
 [Controllers](https://github.com/dimitar-rakov/packages/tree/master/kuka-lwr/ics_lwr/ics_lwr_setup/config/controllers.yaml#L2) are in the [config](https://github.com/dimitar-rakov/packages/tree/master/kuka-lwr/ics_lwr/ics_lwr_setup/config) folder. Note that the name space of controllers and the joint names contain the word `lwr`, which is the name you gave to the arm when creating the robot [here](https://github.com/dimitar-rakov/packages/blob/master/kuka-lwr/ics_lwr/ics_lwr_setup/enviroment/ics_lwr_enviroment.urdf.xacro#L36).
 
