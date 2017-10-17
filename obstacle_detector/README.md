@@ -10,7 +10,7 @@ This package contains the implementation of subtraction of background and robot 
 ## Usage
 
 The node from this package can be run with the aid of the launch files from the _launch_ directory. 
-The following example start a obstacle_detector_node configurated for ICS setup:
+The following example start an obstacle_detector_node:
 ```roslaunch obstacle_detector obstacle_detector.launch```
 
 Ofline API documentation based on doxygen can be generated whit rosdoc_lite. For generation start``` rosdoc_lite .``` whitin the package directory. The generated documentation can be found in created doc/html/index.html
@@ -29,7 +29,7 @@ The package consists of multiple parameters, which can be modified from the laun
 
 
 ```
-In the launch file has to be defined the path to enviromental setup configuration file in (/config). In such file (see examples) can be defined geometric primitive parameters for the static background for subtraction, as well as the geometric primitive parameters used for subtracting of robot body. The property
+In the launch file has to be defined the path to enviromental setup configuration file (in /config). In such file (see examples) can be defined geometric primitive parameters for the static background for subtraction, as well as the geometric primitive parameters used for subtracting of robot body. The property
 'text' defines if points whitin the geometric primitive are kept or removed.
 
 

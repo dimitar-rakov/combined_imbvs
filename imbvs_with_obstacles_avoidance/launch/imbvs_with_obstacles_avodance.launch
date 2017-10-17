@@ -1,0 +1,62 @@
+<launch>
+    <arg name="base_name"                                   default="imbvs_with_obstacles_avoidance"/>
+    <arg name="root_name"                                   default="lwr_base_link"/>
+    <arg name="tip_name"                                    default="lwr_a6_link"/>
+    <arg name="robot_description"                           default="$(find ics_lwr_setup)/enviroment/ics_lwr_enviroment.urdf.xacro"/>
+    <arg name="features_data_topic"                         default="/visual_features_extractor/visual_features_data"/>
+    <arg name="joint_states_topic"                          default="/lwr/joint_states"/>
+    <arg name="obstacles_objects_topic"                     default="/obstacle_detector/obstacle_objects"/>
+    <arg name="robot_objects_topic"                         default="/obstacle_detector/robot_objects"/>
+    <arg name="robot_command_topic"                         default="/lwr/joint_trajectory_controller/command"/>
+    <arg name="robot_trajectory_action_topic"               default="/lwr/joint_trajectory_controller/follow_joint_trajectory"/>
+    <arg name="using_external_set_point"                    default="false"/>
+    <arg name="using_combined_matrices"                     default="true"/>
+    <arg name="using_transpose_jacobian"                    default="false"/>
+    <arg name="enb_obstacle_avoidance"                      default="true"/>
+    <arg name="test_only_obstacle_avoidance"                default="false"/>
+    <arg name="using_multiple_colision_points"              default="true"/>
+    <arg name="v_max"                                       default="0.10"/>
+    <arg name="alpha"                                       default="6.0"/>
+    <arg name="ro_1"                                        default="1.0"/>
+    <arg name="ro_2"                                        default="0.2"/>
+    <arg name="gama_simple"                                 default="[2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]"/> <!-- gama_simple -->
+    <arg name="gama_1_0a"                                   default="[2.0, 2.0, 30.0, 50.0, 50.0, 1.5]"/>
+    <arg name="gama_1_0s"                                   default="[2.0, 2.0, 50.0, 2000.0, 2000.0, 1.5]"/>
+    <arg name="gama_1_1a"                                   default="[2.0, 2.0, 30.0, 50.0, 50.0, 1.5]"/>
+    <arg name="gama_1_1s"                                   default="[2.0, 2.0, 50.0, 50.0, 50.0, 1.5]"/>
+    <arg name="gama_1_2a"                                   default="[2.0, 2.0, 50.0, 50.0, 70.0, 1.5]"/>
+    <arg name="gama_1_2s"                                   default="[2.0, 2.0, 80.0, 100.0, 100.0, 1.5]"/>
+    <arg name="gama_1_3a"                                   default="[2.0, 2.0, 50.0, 50.0, 70.0, 1.5]"/>
+    <arg name="gama_a"                                      default="[2.5, 2.0, 10.0, 20.0, 20.0, 1.5]"/> <!-- gama_1_2a real -->
+    <arg name="gama_s"                                      default="[2.0, 2.0, 15.0, 20.0, 20.0, 1.0]"/> <!-- gama_1_2s real -->
+    <arg name="gama"                                        default="[5.0, 5.0, 40.0, 20.0, 20.0, 1.0]"/> <!-- gama_1_2s real -->
+
+
+    <node name="$(arg base_name)" pkg="imbvs_with_obstacles_avoidance" type="imbvs_with_obstacles_avoidance_node" respawn="false" output="screen">
+        <param name="base_name"                             type="str"    value="$(arg base_name)"/>
+        <param name="root_name"                             type="str"    value="$(arg root_name)"/>
+        <param name="tip_name"                              type="str"    value="$(arg tip_name)"/>
+        <param name="robot_description"                     command="$(find xacro)/xacro.py $(arg robot_description)"/>
+        <param name="features_data_topic"                   type="str"    value="$(arg features_data_topic)"/>
+        <param name="joint_states_topic"                    type="str"    value="$(arg joint_states_topic)"/>
+        <param name="obstacles_objects_topic"               type="str"    value="$(arg obstacles_objects_topic)"/>
+        <param name="robot_objects_topic"                   type="str"    value="$(arg robot_objects_topic)"/>
+        <param name="robot_command_topic"                   type="str"    value="$(arg robot_command_topic)"/>
+        <param name="robot_trajectory_action_topic"         type="str"    value="$(arg robot_trajectory_action_topic)"/>
+        <param name="using_external_set_point"              type="bool"   value="$(arg using_external_set_point)"/>
+        <param name="using_combined_matrices"               type="bool"   value="$(arg using_combined_matrices)"/>
+        <param name="using_transpose_jacobian"              type="bool"   value="$(arg using_transpose_jacobian)"/>
+        <param name="enb_obstacle_avoidance"                type="bool"   value="$(arg enb_obstacle_avoidance)"/>
+        <param name="test_only_obstacle_avoidance"          type="bool"   value="$(arg test_only_obstacle_avoidance)"/>
+        <param name="using_multiple_colision_points"        type="bool"   value="$(arg using_multiple_colision_points)"/>
+        <param name="v_max"                                 type="double" value="$(arg v_max)"/>
+        <param name="alpha"                                 type="double" value="$(arg alpha)"/>
+        <param name="ro_1"                                  type="double" value="$(arg ro_1)"/>
+        <param name="ro_2"                                  type="double" value="$(arg ro_2)"/>
+        <rosparam param="gama"                              subst_value="True">$(arg gama)</rosparam>
+    </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="cam_to_end_eff" args="0.000 0.000 0.11 0.000 0.000 0.707106781 0.707106781 lwr_a6_link eye_in_hand " />
+
+</launch>
+		

@@ -19,17 +19,17 @@ The following example start a kinect_fusion_node configurated for ICS setup:
 Another example configurated for HRI setup, can be started as:
 ```roslaunch kinect_fusion hri_kinect_fusion.launch```
 
-Ofline API documentation based on doxygen can be generated whit rosdoc_lite. For generation start```rosdoc_lite .``` whitin the package directory. The generated documentation can be found in created doc/html/index.html
+Ofline API documentation based on doxygen can be generated whit rosdoc_lite. For generation start ```rosdoc_lite .``` whitin the package directory. The generated documentation can be found in created doc/html/index.html
 
 ## Parameters
 
 The package consists of multiple parameters, which can be modified from the launch file. Here is given the list of them:
 ```
-  Node base name                                          base_name                     default="kinect_fusion"/>
-  Used image topics                                       raw_images_topics             default="[/kinect2_k1/hd/image_color, /kinect2_k2/hd/image_color]"/>
+  Node base name                                          base_name                     default="kinect_fusion"
+  Used image topics                                       raw_images_topics             default="[/kinect2_k1/hd/image_color, /kinect2_k2/hd/image_color]"
   Used camera info topics                                 cameras_info_topics           default="[/kinect2_k1/hd/camera_info, /kinect2_k2/hd/camera_info]
-  Used points topics                                      points_topics                 default="[/kinect2_k1/sd/points, /kinect2_k2/sd/points]"/>
-  Size of used aruco marker in meters                     aruco_marker_size             default="0.265"/>
+  Used points topics                                      points_topics                 default="[/kinect2_k1/sd/points, /kinect2_k2/sd/points]"
+  Size of used aruco marker in meters                     aruco_marker_size             default="0.265"
 
 ```
 In the launch file can be found also static trasform broadcasters related to aruco markers frame and sensors frames. Transformation between kinect sensors rgb and ir frames and between aruco and world have to be adjusted before the calibration. Transformation between ir and world frames are calculated during the calibration, therefore they have to be reparametrized after the calbration process.

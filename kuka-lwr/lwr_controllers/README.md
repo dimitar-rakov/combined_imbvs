@@ -20,9 +20,59 @@ Also more than one controller can be loaded at once:
 
 Sometimes it is desired to load multiple controllers, but start only one of them, with the aim of switch between them at runtime with controller_manager.  
 This can be achieved with the _stopped_controllers_ parameter:  
-```roslaunch lwr_launch lwr_launch.launch controller:="OneTaskInverseKinematics"  stopped_controllers:="ComputedTorqueControl"```  
+```roslaunch lwr_launch lwr_launch.launch controller:="OneTaskInverseKinematics"  stopped_controllers:="AdaptiveTorqueController"```
 
-Once the planning environment has loaded, commands can be sent to any joint in another terminal.
+Already started controllers as for example one_task_inverse_kinematics can be stoped and swicth to another controller can be done by following service call:
+
+```
+rosservice call /lwr/controller_manager/switch_controller
+"start_controllers:
+- ’joint_trajectory_controller’
+stop_controllers:
+- ’one_task_inverse_kinematics’
+strictness: 2"
+```
+
+Controllers tested on ICS setup:
+- ’JointTrajectoryController’
+
+'rostopic pub /lwr/joint_trajectory_controller/command trajectory_msgs/JointTrajectory ’{joint_names: [’lwr_a1_joint’, ’lwr_a2_joint’, ’lwr_e1_joint’,’lwr_a3_joint’, ’lwr_a4_joint’, ’lwr_a5_joint’,’lwr_a6_joint’], points:[{positions: [0.0, 1.570796, 0.0, 0, 0.0, 0.0, -0.0],velocities: [], accelerations: [], effort: [],time_from_start: { secs: 10, nsecs: 0}}]}’ -1'
+
+-OneTaskInverseKinematics
+ a) with default robot base and end effector
+
+'rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
+tool_name: ’flange’
+position:
+  x: 0.0
+  y: 0.6
+  z: 0.5
+orientation:
+  roll: 1.2
+  pitch: 0.3
+  yaw: 0.3"
+'
+ b) with world base and end effector
+
+rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
+tool_name: ’flange’
+position:
+  x: 0.0
+  y: 0.6
+  z: 0.8
+orientation:
+  roll: 0.8
+  pitch: 0.3
+  yaw: 0.5"
+
+
+-AdaptiveTorqueController
+'rostopic pub -1 /lwr/adaptive_torque_controller/command std_msgs/Float64MultiArray ’{data: [0.0, 1.57, 0.0, 0.5, 0.0, 0.0, 0.0]}’'
+
+
+Controler from original package are not tested on ICS setup.
 
 - Impedance Controller:
 `rostopic pub -1  /lwr/JointImpedanceControl/command std_msgs/Float64MultiArray '{ data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}'`
@@ -32,17 +82,6 @@ Once the planning environment has loaded, commands can be sent to any joint in a
 
 - Computed Torque Controller:
 `rostopic pub -1  /lwr/ComputedTorqueControl/command std_msgs/Float64MultiArray '{ data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}'`
-
-- One Task Inverse Kinematics Controller: 
-
-  - Full pose (note the IDs)
-`rostopic pub -1  /lwr/OneTaskInverseKinematics/command lwr_controllers/PoseRPY '{id: 0, position: {x: -0.4, y: 0.3, z: 1.5}, orientation: {roll: 0.1, pitch: 0.2, yaw: 0.0}}'`
-
-  - Position only
-`rostopic pub -1  /lwr/OneTaskInverseKinematics/command lwr_controllers/PoseRPY '{id: 1, position: {x: -0.4, y: 0.3, z: 1.5}}'`
-
-  - Orientation only
-`rostopic pub -1  /lwr/OneTaskInverseKinematics/command lwr_controllers/PoseRPY '{id: 2, orientation: {roll: 0.1, pitch: 0.2, yaw: 0.0}}'`
 
   - PID Gains setting
 `rosrun rqt_reconfigure rqt_reconfigure`
