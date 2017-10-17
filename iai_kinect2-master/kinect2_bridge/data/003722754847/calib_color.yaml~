@@ -1,0 +1,26 @@
+%YAML:1.0
+cameraMatrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 1.0649e+03, 0.0, 951.3198, -1.1797,
+       1.0633e+03, 550.4316, 0.0, 0.0, 1. ]
+distortionCoefficients: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [ 0.0593, -0.0669,
+       0.0029, 0.0018,
+       0.0164 ]
+rotation: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 1., 0., 0., 0., 1., 0., 0., 0., 1. ]
+projection: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 1.0600848789866750e+03, 0., 9.5228345367625184e+02, 0., 0.,
+       1.0583274164755426e+03, 5.4792673646072603e+02, 0., 0., 0., 1.,
+       0., 0., 0., 0., 1. ]

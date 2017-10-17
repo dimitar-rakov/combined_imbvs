@@ -1,0 +1,19 @@
+# make the namespace match the name you use to instantiate the arm in the xacro
+lwr:
+  root: lwr_base_link
+  tip: lwr_a6_link
+  # joints is not used, since with the robot name and urdf name conventions, the parsing is hardcoded
+  # but as a general solution, joint names could be loaded as well, like controllers do
+  joints: 
+  - lwr_a1_joint
+  - lwr_a2_joint
+  - lwr_e1_joint
+  - lwr_a3_joint
+  - lwr_a4_joint
+  - lwr_a5_joint
+  - lwr_a6_joint
+  gravity_wrt_robot_base:
+    x: 0.00000000
+    y: 0.00000000
+    z: 9.80665016
+

@@ -1,0 +1,18 @@
+<package format="2">
+  <name>ics_lwr_setup</name>
+  <version>0.1.0</version>
+  <description>The ics_lwr_setup package</description>
+
+  <maintainer email="dimitar.rakov@tum.de">Dimitar Rakov</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>lwr_hw</exec_depend>
+  <exec_depend>lwr_description</exec_depend>
+  <exec_depend>lwr_controllers</exec_depend>
+
+  <export>
+  </export>
+</package>

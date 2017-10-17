@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ics_lwr_enviroment">
+
+    <!-- Include all models -->
+    <xacro:include filename="$(find lwr_description)/model/kuka_lwr.urdf.xacro"/>
+
+
+    <!-- CONSTANTS -->
+    <xacro:property name="PI" value="3.14159265359" />
+
+    <material name="Grey1">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+    </material>
+
+    <material name="Grey2">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+    </material>
+
+    <material name="DarkGreen1">
+        <color rgba="0.0 0.32 0.02 1.0"/>
+    </material>
+
+
+    <!-- world -->
+    <link name="world"/>
+
+
+    <!-- platform_lower -->
+    <xacro:property name="platform_lower_size_x" value="0.680" />
+    <xacro:property name="platform_lower_size_y" value="0.865" />
+    <xacro:property name="platform_lower_size_z" value="0.315" />
+    <xacro:property name="platform_lower_origin_x" value="${platform_lower_size_x/2}" />
+    <xacro:property name="platform_lower_origin_y" value="${platform_lower_size_y/2}" />
+    <xacro:property name="platform_lower_origin_z" value="${platform_lower_size_z/2}" />
+
+    <link name="platform_lower">
+        <inertial>
+            <mass value="10.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+            <origin xyz="${platform_lower_origin_x} ${platform_lower_origin_y} ${platform_lower_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${platform_lower_size_x} ${platform_lower_size_y} ${platform_lower_size_z}"/>
+            </geometry>
+            <material name="Grey1"> </material>
+        </visual>
+        <collision>
+            <origin xyz="${platform_lower_origin_x} ${platform_lower_origin_y} ${platform_lower_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${platform_lower_size_x} ${platform_lower_size_y} ${platform_lower_size_z}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- fix platform_lower to world -->
+    <joint name="platform_lower_to_world" type="fixed">
+        <origin xyz="0.340 0.000 0.000" rpy="0.000 0.000 ${PI}"/>
+        <parent link="world"/>
+        <child link="platform_lower"/>
+    </joint>
+
+
+    <!-- platform_upper -->
+    <xacro:property name="platform_upper_size_x" value="0.720" />
+    <xacro:property name="platform_upper_size_y" value="0.935" />
+    <xacro:property name="platform_upper_size_z" value="0.185" />
+    <xacro:property name="platform_upper_origin_x" value="${platform_upper_size_x/2}" />
+    <xacro:property name="platform_upper_origin_y" value="${platform_upper_size_y/2}" />
+    <xacro:property name="platform_upper_origin_z" value="${platform_upper_size_z/2}" />
+
+    <link name="platform_upper">
+        <inertial>
+            <mass value="10.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+            <origin xyz="${platform_upper_origin_x} ${platform_upper_origin_y} ${platform_upper_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${platform_upper_size_x} ${platform_upper_size_y} ${platform_upper_size_z}"/>
+            </geometry>
+            <material name="DarkGreen1"> </material>
+        </visual>
+        <collision>
+            <origin xyz="${platform_upper_origin_x} ${platform_upper_origin_y} ${platform_upper_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${platform_upper_size_x} ${platform_upper_size_y} ${platform_upper_size_z}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- fix platform_upper to platform_lower -->
+    <joint name="platform_lower_to_platform_upper" type="fixed">
+        <origin xyz="-0.020 -0.035 ${platform_lower_size_z}" rpy="0.000 0.000 0.000"/>
+        <parent link="platform_lower"/>
+        <child link="platform_upper"/>
+    </joint>
+
+
+    <!-- frame -->
+    <xacro:property name="frame_size_x" value="0.325" />
+    <xacro:property name="frame_size_y" value="0.325" />
+    <xacro:property name="frame_size_z" value="0.990" />
+    <xacro:property name="frame_origin_x" value="${frame_size_x/2}" />
+    <xacro:property name="frame_origin_y" value="${frame_size_y/2}" />
+    <xacro:property name="frame_origin_z" value="${frame_size_z/2}" />
+
+    <link name="frame">
+        <inertial>
+            <mass value="10.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+            <origin xyz="${frame_origin_x} ${frame_origin_y} ${frame_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${frame_size_x} ${frame_size_y} ${frame_size_z}"/>
+            </geometry>
+            <material name="Grey2"> </material>
+        </visual>
+        <collision>
+            <origin xyz="${frame_origin_x} ${frame_origin_y} ${frame_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${frame_size_x} ${frame_size_y} ${frame_size_z}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- attach frame to platform_upper -->
+    <joint name="frame_to_platform_upper" type="fixed">
+        <origin xyz="0.1975 0.065 ${platform_upper_size_z}" rpy="0.000 0.000 0.000"/>
+        <parent link ="platform_upper" />
+        <child link ="frame" />
+    </joint>
+
+
+    <!-- panel -->
+    <xacro:property name="panel_size_x" value="${frame_size_x}" />
+    <xacro:property name="panel_size_y" value="0.015" />
+    <xacro:property name="panel_size_z" value="${frame_size_x}" />
+    <xacro:property name="panel_origin_x" value="${panel_size_x/2}" />
+    <xacro:property name="panel_origin_y" value="${panel_size_y/2}" />
+    <xacro:property name="panel_origin_z" value="${panel_size_z/2}" />
+
+    <link name="panel">
+        <inertial>
+            <mass value="10.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" iyz="0" ixz="0"/>
+        </inertial>
+        <visual>
+            <origin xyz="${panel_origin_x} ${panel_origin_y} ${panel_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${panel_size_x} ${panel_size_y} ${panel_size_z}"/>
+            </geometry>
+            <material name="Grey1"> </material>
+        </visual>
+        <collision>
+            <origin xyz="${panel_origin_x} ${panel_origin_y} ${panel_origin_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${panel_size_x} ${panel_size_y} ${panel_size_z}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- attach panel to frame -->
+    <joint name="panel_to_frame" type="fixed">
+        <origin xyz="0.000 -${panel_size_y} 0.560" rpy="0.000 0.000 0.000"/>
+        <parent link ="frame" />
+        <child link ="panel" />
+    </joint>
+
+
+    <!-- reference stage to gazebo -->
+    <gazebo reference="panel">
+        <static>true</static>>
+    </gazebo>
+
+
+    <!-- connect framework with robot -->
+    <xacro:property name="robot_origin_x" value="${panel_origin_x}" />
+    <xacro:property name="robot_origin_y" value="${panel_origin_y - panel_size_y/2}" />
+    <xacro:property name="robot_origin_z" value="${panel_origin_z}" />
+    <xacro:property name="robot_origin_roll" value="${PI/2}" />
+    <xacro:property name="robot_origin_pitch" value="${-PI/2}" />
+    <xacro:property name="robot_origin_yaw" value="0" />
+
+    <xacro:kuka_lwr parent="panel" name="lwr">
+        <origin xyz="${robot_origin_x} ${robot_origin_y} ${robot_origin_z}" rpy="${robot_origin_roll} ${robot_origin_pitch} ${robot_origin_yaw}"/>
+    </xacro:kuka_lwr>
+
+</robot>

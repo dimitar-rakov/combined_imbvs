@@ -1,0 +1,13 @@
+<package format="2">
+  <name>lwr_hw_interfaces</name>
+  <version>0.1.0</version>
+  <description>The lwr_hw_interfaces package implementes additional specific hardware interfaces for LWR 4</description>
+  <maintainer email="dimitar.rakov@tum.de">Dimitar Rakov</maintainer>
+
+  <license>GPLv2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>hardware_interface</depend>
+
+</package>

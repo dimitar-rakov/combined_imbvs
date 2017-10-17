@@ -1,0 +1,23 @@
+# INITIAL POSITION IN RAD and STIFFNESS
+
+lwr_a1_joint:
+    init_position: 0.00
+
+lwr_a2_joint:
+    init_position: 0.00
+
+lwr_e1_joint:
+    init_position: 0.00
+
+lwr_a3_joint:
+    init_position: -1.57079
+
+lwr_a4_joint:
+    init_position: 0.00
+
+lwr_a5_joint:
+    init_position: 1.57079
+
+lwr_a6_joint:
+    init_position: 0.00
+

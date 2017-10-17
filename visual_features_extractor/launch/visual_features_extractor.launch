@@ -1,0 +1,49 @@
+<launch>
+  <arg name="base_name"                     default="visual_fetures_extractor"/>
+  <arg name="raw_images_topic"              default="/usb_cam/image_raw"/>
+  <arg name="camera_name"                   default="eye_in_hand"/>
+  <arg name="using_sim_features"            default="false"/>
+  <arg name="using_extended_features"       default="true"/>
+  <arg name="using_symmetrical_features"    default="true"/>
+  <arg name="extended_features_var"         default="1.2"/>
+  <arg name="using_colored_blobs"           default="false"/>
+  <arg name="contour_area_threshold"        default="25.0"/>
+  <arg name="blobs_color_ranges"            default="[ {h_min: 170, h_max: 10}, {h_min: 40, h_max: 80}, {h_min: 100, h_max: 125}, {h_min: 130, h_max: 165} ]"/>   <!-- red, green, blue, magenta -->
+  <arg name="arucos_param"                  default="[ {id: 110, size: 0.04}, {id: 120, size: 0.04}, {id: 130, size: 0.04}, {id: 140, size: 0.04} ]"/>
+  <arg name="camera_param_file"             default="$(find usb_cam)/eye_in_hand_640x480.yaml"/>
+
+
+
+  <group unless="$(arg using_sim_features)">
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+      <param name="video_device" value="/dev/video0" />
+      <param name="image_width" value="640" />
+      <param name="image_height" value="480" />
+      <param name="pixel_format" value="yuyv" />
+      <param name="camera_frame_id" value="eye_in_hand" />
+      <param name="io_method" value="mmap"/>
+      <param name="camera_name" value="eye_in_hand"/>
+      <param name="camera_info_url" value="file://$(find usb_cam)/eye_in_hand_640x480.yaml"/>
+    </node>
+  </group>
+
+
+  <node name="visual_features_extractor" pkg="visual_features_extractor" type="visual_features_extractor_node" respawn="false" output="screen">
+    <param name="base_name"                     type="str"    value="$(arg base_name)"/>
+    <param name="raw_images_topic"              type="str"    value="$(arg raw_images_topic)"/>
+    <param name="camera_name"                   type="str"    value="$(arg camera_name)"/>
+    <param name="using_sim_features"            type="bool"   value="$(arg using_sim_features)"/>
+    <param name="using_extended_features"       type="bool"   value="$(arg using_extended_features)"/>
+    <param name="using_symmetrical_features"    type="bool"   value="$(arg using_symmetrical_features)"/>
+    <param name="extended_features_var"         type="double" value="$(arg extended_features_var)"/>
+    <param name="using_colored_blobs"           type="bool"   value="$(arg using_colored_blobs)"/>
+    <param name="contour_area_threshold"        type="double" value="$(arg contour_area_threshold)"/>
+    <rosparam param="blobs_color_ranges"        subst_value="True">$(arg blobs_color_ranges)</rosparam>
+    <rosparam param="arucos_param"              subst_value="True">$(arg arucos_param)</rosparam>
+    <rosparam param="$(arg camera_name)"        file="$(arg camera_param_file)"         command="load"/>
+  </node>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="cam_to_end_eff" args="0.000 0.000 0.110 0.000 0.000 0.707106781 0.707106781 lwr_a6_link eye_in_hand " />
+
+
+</launch>

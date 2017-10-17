@@ -1,0 +1,53 @@
+lwr:
+  # CONTROLLERS USED IN THE EXAMLE
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # THIS CONFIGURATION IS ACTUALLY SENDING TAU = K*Q
+  joint_trajectory_controller:
+    type: position_controllers/JointTrajectoryController
+    joints: 
+      - lwr_a1_joint
+      - lwr_a2_joint
+      - lwr_e1_joint
+      - lwr_a3_joint
+      - lwr_a4_joint
+      - lwr_a5_joint
+      - lwr_a6_joint
+
+## OTHER CUSTOM CONTROLLERS LEFT HERE AS EXAMPLES
+  gravity_compensation_controller:
+    type: lwr_controllers/GravityCompensation
+    root_name: lwr_base_link
+    tip_name: lwr_a6_link
+    theta: [0.026451, 0.079353, 0.105804, 0.105804, 0.057207, 0.057207, 0.062513]
+    stiffness: [1000.0,   500.0,   100.0,   50.0,   20.0,  0.0,   0.0]
+    enb_record_all_data: true
+ 
+  # Adaptive Torque Controller
+  adaptive_torque_controller:
+    type: lwr_controllers/AdaptiveTorqueController
+    root_name: lwr_base_link
+    tip_name: lwr_a6_link
+    Kp: [11.0, 11.0, 9.0, 11.0, 8.0, 9.0, 9.0]
+    Ki: [24.2, 24.2, 16.2, 24.2, 12.8, 16.2, 16.2]
+    Kd: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+    theta: [0.026451, 0.079353, 0.105804, 0.105804, 0.057207, 0.057207, 0.062513]
+    enb_record_all_data: true
+    enb_adapting: true
+
+  # One Task Inverse Kinematics
+  one_task_inverse_kinematics:
+    type: lwr_controllers/OneTaskInverseKinematics
+    root_name: lwr_base_link
+    tip_name: lwr_a6_link
+    enb_record_all_data: true
+    bases:
+        base_wrt_world : {position: [0.0, -0.015, 1.225], rpy: [-1.57079, -1.57079, 0.0000]}
+        workspace_base_lwr_base : {position: [-0.55, 0.0, 0.345], rpy: [-3.14159, -1.57079, 0.0000]}
+    tools:
+        camera_wrt_effector : {position: [0.0, -0.015, 0.095], rpy: [0.00000, 0.00000, 1.57079]}
+        # lego_gripper : {position: [-0.01, -0.014, 0.205], rpy: [-3.15713, 0.0, -0.07727]}
+        # lego_gripper: {position: [-0.0095, -0.014, 0.204], rpy: [-3.16497, 0.0, -0.07727]}
+        lego_gripper: {position: [-0.01, 0.014, 0.204], rpy: [-3.16497, 0.0, 0.0]}

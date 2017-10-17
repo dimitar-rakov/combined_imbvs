@@ -1,0 +1,20 @@
+image_width: 640
+image_height: 480
+camera_name: eye_in_hand
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [815.661400, 0.000000, 331.295054, 0.000000, 811.713167, 225.265708, 0.000000, 0.000000, 1.000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.024571, 0.115055, -0.003360, 0.002966, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [816.049194, 0.000000, 331.959378, 0.000000, 0.000000, 811.882385, 223.783011, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]

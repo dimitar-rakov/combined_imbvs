@@ -1,0 +1,26 @@
+<package format="2">
+  <name>kuka_lwr</name>
+  <version>0.1.0</version>
+  <description>
+    ROS meta-package containing kuka lwr packages.
+  </description>
+  <maintainer email="carlos.rosales@for.unipi.it">Carlos Rosales</maintainer>
+  <license>GPLv2</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- PACKAGES -->
+
+  <!-- Model -->
+  <exec_depend> lwr_description </exec_depend>
+
+  <!-- ROSControl-based controllers -->
+  <exec_depend> lwr_controllers </exec_depend>
+
+  <!--  Hardware interfaces real/sim -->
+  <exec_depend> lwr_hw </exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

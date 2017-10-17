@@ -1,0 +1,149 @@
+# ToDO orientation in future
+
+filter_robot_obj:
+  filter_robot_obj001:
+    id: 100
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_base_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.40, y: 0.40, z: 0.40 }
+
+  filter_robot_obj002:
+    id: 101
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a1_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj003:
+    id: 102
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a1_link'
+    position: {x: 0.0, y: 0.0, z: 0.14 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj004:
+    id: 103
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a2_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj005:
+    id: 104
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a2_link'
+    position: {x: 0.0, y: 0.0, z: 0.14 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj006:
+    id: 105
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_e1_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj007:
+    id: 106
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_e1_link'
+    position: {x: 0.0, y: 0.0, z: 0.14 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj008:
+    id: 107
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a3_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.40, y: 0.40, z: 0.40 }
+
+  filter_robot_obj009:
+    id: 108
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a3_link'
+    position: {x: 0.0, y: 0.0, z: 0.14 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj010:
+    id: 109
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a4_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj011:
+    id: 110
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a4_link'
+    position: {x: 0.0, y: 0.0, z: 0.14 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.40, y: 0.40, z: 0.40 }
+
+  filter_robot_obj012:
+    id: 111
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a5_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.35, y: 0.35, z: 0.35 }
+
+  filter_robot_obj013:
+    id: 112
+    type: SPHERE
+    text: REMOVE
+    frame_id: 'lwr_a6_link'
+    position: {x: 0.0, y: 0.0, z: 0.0 }
+    rgba: {r: 0.0, g: 0.0, b: 1.0, a: 0.3 }
+    scale: {x: 0.32, y: 0.32, z: 0.32 }
+
+
+filter_env_obj:
+  filter_env_obj001:
+    id: 10
+    type: 'CUBE'
+    text: 'KEEP'
+    frame_id: 'world'
+    position: {x: 0.0, y: 1.0, z: 1.4 }
+    rgba: {r: 0.0, g: 1.0, b: 0.0, a: 0.1 }
+    scale: {x: 2.4, y: 1.6, z: 2.4}
+
+  filter_env_obj002:
+    id: 11
+    type: 'CUBE'
+    text: 'REMOVE'
+    frame_id: 'world'
+    position: {x: 1.05, y: 1.0, z: 0.6 }
+    rgba: {r: 1.0, g: 0.0, b: 0.0, a: 0.5 }
+    scale: {x: 0.3, y: 1.6, z: 1.2 }
+
+  filter_env_obj003:
+    id: 12
+    type: 'CUBE'
+    text: 'REMOVE'
+    frame_id: 'world'
+    position: {x: 0.50, y: 1.6, z: 0.6 }
+    rgba: {r: 1.0, g: 0.4, b: 0.0, a: 0.5 }
+    scale: {x: 0.8, y: 0.4, z: 1.2 }
+

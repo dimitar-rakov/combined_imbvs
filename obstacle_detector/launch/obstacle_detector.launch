@@ -1,0 +1,23 @@
+<launch>
+
+    <arg name="base_name"           default="obstacle_detector"/>
+    <arg name="points_topic"        default="/kinect_fusion/points"/>
+    <arg name="fixed_frame"         default="world"/>
+    <arg name="tf_names"            default="[lwr_base_link, lwr_a1_link, lwr_a2_link, lwr_e1_link, lwr_a3_link, lwr_a4_link, lwr_a5_link, lwr_a6_link]"/>
+    <arg name="octree_resolution"   default="0.14"/>
+    <arg name="min_voxel_points"    default="40"/>
+
+    <node name="$(arg base_name)"       pkg="obstacle_detector" type="obstacle_detector_node" output="screen">
+        <rosparam file="$(find obstacle_detector)/config/hri_parameters.yaml" command="load"/>
+        <param name="base_name"         type="str"              value="$(arg base_name)"/>
+        <param name="points_topic"      type="str"              value="$(arg points_topic)"/>
+        <param name="fixed_frame"       type="str"              value="$(arg fixed_frame)"/>
+        <rosparam param="tf_names"      subst_value="True">     $(arg tf_names)</rosparam>
+        <param name="octree_resolution" type="double"           value="$(arg octree_resolution)"/>
+        <param name="min_voxel_points"  type="int"              value="$(arg min_voxel_points)"/>
+    </node>
+
+</launch>
+
+
+

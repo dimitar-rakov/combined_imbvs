@@ -1,0 +1,6 @@
+geometry_msgs/Vector3 start_position
+geometry_msgs/Vector3 end_position
+
+float64 time
+---
+bool set
