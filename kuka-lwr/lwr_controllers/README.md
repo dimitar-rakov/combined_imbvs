@@ -40,7 +40,7 @@ Controllers tested on ICS setup:
 
 - OneTaskInverseKinematics
 
-## 1. With default robot base and end effector
+# 1. With default robot base and end effector
 
 `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
@@ -55,7 +55,7 @@ orientation:
   yaw: 0.3"
 `
 
-## w. With world base and end effector
+# 2. With world base and end effector
 
 `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
