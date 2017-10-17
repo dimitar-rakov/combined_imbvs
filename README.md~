@@ -18,11 +18,11 @@ Next package to start is the visual_features_extraction. There is option for sim
 
 ```roslaunch visual_features_extractor visual_features_extractor.launch using_sim_features:=true```
 
-or for working with real camera and real features:
+or for working with a real camera and real features:
 
 ```roslaunch visual_features_extractor visual_features_extractor.launch using_sim_features:=false```
 
-The next step is to start kinect sensors and kinect fusion package. For this framework we work with two kinect xbox sensors, which configurations are defined in coresponding launch files. If more sensors are going to be used, additional launch files have to be prepared. Both kinects, used for our setup, can be started with following sequence:
+The next step is to start kinect sensors and kinect fusion package. For this framework are used two kinect xbox sensors, which configurations are defined in coresponding launch files. If more sensors are going to be used, additional launch files have to be prepared. Both kinects, used for the setup, can be started with following sequence:
 
 ```roslaunch kinect2_bridge_k1.launch kinect2_bridge_k1.launch```
 ```roslaunch kinect2_bridge_k2.launch kinect2_bridge_k2.launch```
@@ -34,7 +34,7 @@ For starting the fusion package has to prepared a proper configuration in launch
 Another example, configurated for HRI setup, can be started as:
 ```roslaunch kinect_fusion hri_kinect_fusion.launch```
 
-Next package is obstacle _avoidance. The enviromental setup and robot related have to be adjusted first. The following example start an obstacle_detector_node:
+Next package is obstacle _avoidance. The enviromental setup and robot related parameters have to be adjusted first. The following example start an obstacle_detector_node:
 ```roslaunch obstacle_detector obstacle_detector.launch```
 
 

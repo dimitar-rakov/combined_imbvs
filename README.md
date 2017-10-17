@@ -14,7 +14,7 @@ For the real robot start first start the ros_control script on robot side after 
 
 ```roslaunch ics_lwr_launch ics_lwr.launch use_lwr_sim:=false lwr_powered:=true```
 
-Next package to start is the visual_features_extraction. There is option for simulation started as:
+Next package, whic has to be to started is the visual_features_extraction. There is option for simulation started as:
 
 ```roslaunch visual_features_extractor visual_features_extractor.launch using_sim_features:=true```
 
@@ -38,6 +38,6 @@ Next package is obstacle _avoidance. The enviromental setup and robot related pa
 ```roslaunch obstacle_detector obstacle_detector.launch```
 
 
-Last package to start is imbvs_with_obstacles_avoidance:
+Last package is imbvs_with_obstacles_avoidance:
 
 ```roslaunch imbvs_with_obstacles_avoidance imbvs_with_obstacles_avoidance.launch```

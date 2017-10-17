@@ -36,12 +36,12 @@ strictness: 2"
 Controllers tested on ICS setup:
 - ’JointTrajectoryController’
 
-'rostopic pub /lwr/joint_trajectory_controller/command trajectory_msgs/JointTrajectory ’{joint_names: [’lwr_a1_joint’, ’lwr_a2_joint’, ’lwr_e1_joint’,’lwr_a3_joint’, ’lwr_a4_joint’, ’lwr_a5_joint’,’lwr_a6_joint’], points:[{positions: [0.0, 1.570796, 0.0, 0, 0.0, 0.0, -0.0],velocities: [], accelerations: [], effort: [],time_from_start: { secs: 10, nsecs: 0}}]}’ -1'
+`rostopic pub /lwr/joint_trajectory_controller/command trajectory_msgs/JointTrajectory ’{joint_names: [’lwr_a1_joint’, ’lwr_a2_joint’, ’lwr_e1_joint’,’lwr_a3_joint’, ’lwr_a4_joint’, ’lwr_a5_joint’,’lwr_a6_joint’], points:[{positions: [0.0, 1.570796, 0.0, 0, 0.0, 0.0, -0.0],velocities: [], accelerations: [], effort: [],time_from_start: { secs: 10, nsecs: 0}}]}’ -1`
 
 -OneTaskInverseKinematics
  a) with default robot base and end effector
 
-'rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+`rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
 tool_name: ’flange’
 position:
@@ -52,10 +52,10 @@ orientation:
   roll: 1.2
   pitch: 0.3
   yaw: 0.3"
-'
+`
  b) with world base and end effector
 
-rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+`rostopic pub -1 /lwr/one_task_inverse_kinematics/command
 lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
 tool_name: ’flange’
 position:
@@ -66,10 +66,10 @@ orientation:
   roll: 0.8
   pitch: 0.3
   yaw: 0.5"
-
+`
 
 -AdaptiveTorqueController
-'rostopic pub -1 /lwr/adaptive_torque_controller/command std_msgs/Float64MultiArray ’{data: [0.0, 1.57, 0.0, 0.5, 0.0, 0.0, 0.0]}’'
+`rostopic pub -1 /lwr/adaptive_torque_controller/command std_msgs/Float64MultiArray ’{data: [0.0, 1.57, 0.0, 0.5, 0.0, 0.0, 0.0]}’`
 
 
 Controler from original package are not tested on ICS setup.

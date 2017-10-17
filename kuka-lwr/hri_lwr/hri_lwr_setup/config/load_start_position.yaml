@@ -1,4 +1,4 @@
-# INITIAL POSITION IN RAD and STIFFNESS
+# INITIAL POSITION IN RAD
 
 lwr_a1_joint:
     init_position: 0.00
