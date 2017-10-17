@@ -42,32 +42,32 @@ Controllers tested on ICS setup:
 
   - With default robot base and end effector
 
-`rostopic pub -1 /lwr/one_task_inverse_kinematics/command
-lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
-tool_name: ’flange’
-position:
-  x: 0.0
-  y: 0.6
-  z: 0.5
-orientation:
-  roll: 1.2
-  pitch: 0.3
-  yaw: 0.3"
-`
+  `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+  lwr_controllers/PoseWithBaseAndTool "base_name: ’robot_base’
+  tool_name: ’flange’
+  position:
+    x: 0.0
+    y: 0.6
+    z: 0.5
+  orientation:
+    roll: 1.2
+    pitch: 0.3
+    yaw: 0.3"
+  `
   - With world base and end effector
 
-`rostopic pub -1 /lwr/one_task_inverse_kinematics/command
-lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
-tool_name: ’flange’
-position:
-  x: 0.0
-  y: 0.6
-  z: 0.8
-orientation:
-  roll: 0.8
-  pitch: 0.3
-  yaw: 0.5"
-`
+  `rostopic pub -1 /lwr/one_task_inverse_kinematics/command
+  lwr_controllers/PoseWithBaseAndTool "base_name: ’world’
+  tool_name: ’flange’
+  position:
+    x: 0.0
+    y: 0.6
+    z: 0.8
+  orientation:
+    roll: 0.8
+    pitch: 0.3
+    yaw: 0.5"
+  `
 
 - AdaptiveTorqueController
 `rostopic pub -1 /lwr/adaptive_torque_controller/command std_msgs/Float64MultiArray ’{data: [0.0, 1.57, 0.0, 0.5, 0.0, 0.0, 0.0]}’`
